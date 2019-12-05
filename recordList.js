@@ -1,16 +1,20 @@
 const request=require("request")
 const cheerio=require("cheerio")
 var item=0;
-request('http://www.cwl.gov.cn/kjxx/ssq/kjgg/',function(err,res){
-    if(err)
-    {
-        console.log('请求出错');
-    }
-    else
-    {
-        var $ = cheerio.load(res.body, {decodeEntities: false});
-        var element =  $('.bgzt table').toString();
-        console.log(element)
+setTimeout(function(){
+    request('http://www.cwl.gov.cn/kjxx/ssq/kjgg/',function(err,res){
+        console.log('in')
+        if(err)
+        {
+            console.log('请求出错');
+        }
+        else
+        {
+            var $ = cheerio.load(res.body, {decodeEntities: false});
+            var element =  $('.bgzt table').toString();
+            console.log(element)
+        }
+    })},60000)
        /* var news = {}, newsList = [];
         for(var i = 0; i < element.length; i++){
             console.log('111')
@@ -44,5 +48,4 @@ request('http://www.cwl.gov.cn/kjxx/ssq/kjgg/',function(err,res){
          console.log("第"+(i+1)+"行，第"+(j+1)+"个td的值："+$(this).text()+"。");
          })
          });*/
-    }
-});
+

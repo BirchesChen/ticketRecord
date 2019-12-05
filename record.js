@@ -1,9 +1,9 @@
 const request=require("request")
 const cheerio=require("cheerio")
-var item=0;
+//var item=0;
 var url='http://www.cwl.gov.cn//c/';
 var date=['2019-12-03/','2019-12-01/','2019-11-28/','2019-11-26/','2019-11-24/','2019-11-21/','2019-11-19/','2019-11-17/','2019-11-14/','2019-11-12/']
-var periods=['2019139','2019138','2019137','2019136','2019135','2019134','2019133','2019132','2019131','2019130']
+var periods=['460865','460756','460643','460533','460423','460410','460300','460290','460177','460067']
 for(const i in date){
    const recordDate = date[i]
    const recordPeriods = periods[i]

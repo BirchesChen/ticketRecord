@@ -2,7 +2,7 @@ var request = require('request');
 var cheerio=require("cheerio")
 var mysql=require('mysql')
 var linkArr=[]
-var db=mysql.createPool({host:'loaclhost',user:'root',password:'123456',database:'recordlist'});
+var db=mysql.createPool({host:'localhost',user:'root',password:'123456', port: '3306',database:'recordlist'});
 
 var options = {
     url: 'http://www.cwl.gov.cn/cwl_admin/kjxx/findDrawNotice?name=ssq&issueCount=30',
@@ -52,7 +52,7 @@ function callback(error, response, body) {
                         obj.中奖注数 =col2_value;
                         obj.金额 = col3_value;
                         arrData.push(obj);
-                        db.query(`INSERT INTO news (奖等, 中奖注数, 金额) VALUE('${col1_value}', '${col2_value}','${col3_value}')`,function(err,data){
+                        db.query(`INSERT INTO record (奖等, 中奖注数, 金额) VALUE('${col1_value}', '${col2_value}','${col3_value}')`,function(err,data){
                             if(err)
                             {
                                 console.log("数据库连接错误");
